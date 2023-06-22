@@ -1,13 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
 import Moveable from "react-moveable";
+import { getImage } from "./helpers/getImage";
 
 const App = () => {
   const [moveableComponents, setMoveableComponents] = useState([]);
   const [selected, setSelected] = useState(null);
 
-  const addMoveable = () => {
+  const addMoveable = async () => {
     // Create a new moveable component and add it to the array
-    const COLORS = ["red", "blue", "yellow", "green", "purple"];
+    // const COLORS = ["red", "blue", "yellow", "green", "purple"];
+    const rndImage = await getImage();
 
     setMoveableComponents([
       ...moveableComponents,
@@ -17,10 +19,16 @@ const App = () => {
         left: 0,
         width: 100,
         height: 100,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        updateEnd: true
+        background: "url(" + rndImage.thumbnailUrl + ")", //COLORS[Math.floor(Math.random() * COLORS.length)],
+        updateEnd: true,
       },
     ]);
+  };
+
+  const deleteMoveable = () => {
+    setMoveableComponents(
+      moveableComponents.filter((element) => element.id !== selected)
+    );
   };
 
   const updateMoveable = (id, newComponent, updateEnd = false) => {
@@ -55,8 +63,9 @@ const App = () => {
   };
 
   return (
-    <main style={{ height : "100vh", width: "100vw" }}>
+    <main style={{ height: "100vh", width: "100vw" }}>
       <button onClick={addMoveable}>Add Moveable1</button>
+      <button onClick={() => deleteMoveable()}>Delete Moveable1</button>
       <div
         id="parent"
         style={{
@@ -90,7 +99,7 @@ const Component = ({
   width,
   height,
   index,
-  color,
+  background,
   id,
   setSelected,
   isSelected = false,
@@ -104,13 +113,13 @@ const Component = ({
     width,
     height,
     index,
-    color,
+    background,
     id,
   });
 
   let parent = document.getElementById("parent");
   let parentBounds = parent?.getBoundingClientRect();
-  
+
   const onResize = async (e) => {
     // ACTUALIZAR ALTO Y ANCHO
     let newWidth = e.width;
@@ -129,7 +138,7 @@ const Component = ({
       left,
       width: newWidth,
       height: newHeight,
-      color,
+      background,
     });
 
     // ACTUALIZAR NODO REFERENCIA
@@ -178,7 +187,7 @@ const Component = ({
         left: absoluteLeft,
         width: newWidth,
         height: newHeight,
-        color,
+        background,
       },
       true
     );
@@ -196,7 +205,7 @@ const Component = ({
           left: left,
           width: width,
           height: height,
-          background: color,
+          background: background,
         }}
         onClick={() => setSelected(id)}
       />
@@ -211,11 +220,11 @@ const Component = ({
             left: e.left,
             width,
             height,
-            color,
+            background,
           });
         }}
         onResize={onResize}
-        onResizeEnd={onResizeEnd}
+        // onResizeEnd={onResizeEnd}
         keepRatio={false}
         throttleResize={1}
         renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
