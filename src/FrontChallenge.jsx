@@ -13,16 +13,16 @@ export const FrontChallenge = () => {
   } = useFront();
 
   return (
-    <main style={{ height: "100vh", width: "100vw" }}>
+    <main>
       <button onClick={addMoveable}>Add Moveable1</button>
       <button onClick={deleteMoveable}>Delete Moveable1</button>
       <div
         id="parent"
         style={{
           position: "relative",
-          background: "black",
-          height: "80vh",
-          width: "80vw",
+          background: "#232323",
+          height: "65vh",
+          width: "65vw",
         }}
       >
         {moveableComponents.map((item, index) => (

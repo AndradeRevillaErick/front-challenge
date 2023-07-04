@@ -25,7 +25,17 @@ export const useDraggable = ({
   let parent = document.getElementById("parent");
   let parentBounds = parent?.getBoundingClientRect();
 
+  const onDrag = async (e) => {
+    e.target.style.transform = e.transform;
+  };
+
   const onResize = async (e) => {
+    e.target.style.width = `${e.width}px`;
+    e.target.style.height = `${e.height}px`;
+    e.target.style.transform = e.drag.transform;
+  };
+
+  const onResizeOld = async (e) => {
     // ACTUALIZAR ALTO Y ANCHO
     let newWidth = e.width;
     let newHeight = e.height;
@@ -98,5 +108,5 @@ export const useDraggable = ({
     );
   };
 
-  return { onResize, onResizeEnd, ref };
+  return { onDrag, onResize, onResizeEnd, ref };
 };

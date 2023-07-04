@@ -14,8 +14,8 @@ export const useFront = () => {
       ...moveableComponents,
       {
         id: Math.floor(Math.random() * Date.now()),
-        top: 0,
-        left: 0,
+        top: 7,
+        left: 7,
         width: 100,
         height: 100,
         background: `url(${rndImage.thumbnailUrl})`, //COLORS[Math.floor(Math.random() * COLORS.length)],

@@ -1,5 +1,7 @@
 body{
-  /* background-color: aquamarine; */
+  display: grid;
+  place-items: center;
+  background-color: #232323;
 }
 
 .title {
@@ -28,4 +30,12 @@ body{
 }
 
 .draggable {
+  border-radius: 21px;
+}
+
+#parent{
+  border-radius: 21px;
+  background: #232323;
+  box-shadow: inset 10px 10px 9px #0f0f0f,
+  inset -10px -10px 9px #373737;
 }
