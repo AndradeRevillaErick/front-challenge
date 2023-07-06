@@ -7,8 +7,6 @@ export const FrontChallenge = () => {
     setSelected,
     addMoveable,
     deleteMoveable,
-    updateMoveable,
-    handleResizeStart,
     moveableComponents,
   } = useFront();
 
@@ -20,7 +18,6 @@ export const FrontChallenge = () => {
         id="parent"
         style={{
           position: "relative",
-          background: "#232323",
           height: "65vh",
           width: "65vw",
         }}
@@ -29,8 +26,6 @@ export const FrontChallenge = () => {
           <DraggableElement
             {...item}
             key={index}
-            updateMoveable={updateMoveable}
-            handleResizeStart={handleResizeStart}
             setSelected={setSelected}
             isSelected={selected === item.id}
           />

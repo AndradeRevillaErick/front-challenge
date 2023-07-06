@@ -2,28 +2,17 @@ import Moveable from "react-moveable";
 import { useDraggable } from "../hooks/useDraggable";
 
 export const DraggableElement = ({
-  updateMoveable,
+  id,
   top,
   left,
   width,
   height,
-  index,
   background,
-  id,
   setSelected,
   isSelected = false,
-  updateEnd,
 }) => {
-  const { onDrag, onResize, ref } = useDraggable({
-    id,
-    top,
-    left,
-    width,
-    height,
-    index,
-    background,
-    updateMoveable,
-  });
+  const { ref, onDrag, onResize } = useDraggable();
+  console.log(ref.current);
 
   return (
     <>
