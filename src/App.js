@@ -79,7 +79,7 @@ const App = () => {
           <Component
             {...item}
             key={index}
-            updateMoveable={updateMoveable}
+            // updateMoveable={updateMoveable}
             handleResizeStart={handleResizeStart}
             setSelected={setSelected}
             isSelected={selected === item.id}
@@ -93,7 +93,7 @@ const App = () => {
 export default App;
 
 const Component = ({
-  updateMoveable,
+  // updateMoveable,
   top,
   left,
   width,
@@ -133,13 +133,13 @@ const Component = ({
     if (positionMaxLeft > parentBounds?.width)
       newWidth = parentBounds?.width - left;
 
-    updateMoveable(id, {
-      top,
-      left,
-      width: newWidth,
-      height: newHeight,
-      background,
-    });
+    // updateMoveable(id, {
+    //   top,
+    //   left,
+    //   width: newWidth,
+    //   height: newHeight,
+    //   background,
+    // });
 
     // ACTUALIZAR NODO REFERENCIA
     const beforeTranslate = e.drag.beforeTranslate;
@@ -180,17 +180,17 @@ const Component = ({
     const absoluteTop = top + beforeTranslate[1];
     const absoluteLeft = left + beforeTranslate[0];
 
-    updateMoveable(
-      id,
-      {
-        top: absoluteTop,
-        left: absoluteLeft,
-        width: newWidth,
-        height: newHeight,
-        background,
-      },
-      true
-    );
+    // updateMoveable(
+    //   id,
+    //   {
+    //     top: absoluteTop,
+    //     left: absoluteLeft,
+    //     width: newWidth,
+    //     height: newHeight,
+    //     background,
+    //   },
+    //   true
+    // );
   };
 
   return (
@@ -215,13 +215,14 @@ const Component = ({
         resizable
         draggable
         onDrag={(e) => {
-          updateMoveable(id, {
-            top: e.top,
-            left: e.left,
-            width,
-            height,
-            background,
-          });
+          e.target.style.transform = e.transform;
+          // updateMoveable(id, {
+          // top: e.top,
+          // left: e.left,
+          // width,
+          // height,
+          // background,
+          // });
         }}
         onResize={onResize}
         // onResizeEnd={onResizeEnd}

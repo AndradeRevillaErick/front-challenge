@@ -1,5 +1,6 @@
 body{
   display: grid;
+  height: 100vh;
   place-items: center;
   background-color: #232323;
 }
@@ -18,15 +19,12 @@ body{
   gap: 1em;
 }
 
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  font-size: 8px;
+button{
+  margin: 50px;
+  font-size: 2rem;
+  color: #232323;
+  letter-spacing: 2px;
+  border-radius: 13px;
 }
 
 .draggable {
@@ -35,7 +33,11 @@ body{
 
 #parent{
   border-radius: 21px;
+  border: 12px solid#232323;
   background: #232323;
-  box-shadow: inset 10px 10px 9px #0f0f0f,
+  box-shadow: 
+  13px 13px 16px #0f0f0f,
+  -13px -13px 16px #373737,
+  inset 10px 10px 9px #0f0f0f,
   inset -10px -10px 9px #373737;
 }

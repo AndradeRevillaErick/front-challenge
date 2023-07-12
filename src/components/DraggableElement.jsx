@@ -10,9 +10,9 @@ export const DraggableElement = ({
   background,
   setSelected,
   isSelected = false,
+  updateMoveable,
 }) => {
   const { ref, onDrag, onResize } = useDraggable();
-  console.log(ref.current);
 
   return (
     <>
@@ -27,6 +27,8 @@ export const DraggableElement = ({
           width: width,
           height: height,
           background: background,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100%",
         }}
         onClick={() => setSelected(id)}
       />
@@ -36,14 +38,17 @@ export const DraggableElement = ({
         resizable
         draggable
         origin={false}
-        onDrag={onDrag}
+        onDrag={(e) => {
+          onDrag(e);
+        }}
+        keepRatio={true}
         snappable={true}
         snapThreshold={15}
         onResize={onResize}
         verticalGuidelines={[50, 150, 250, 450, 550]}
         horizontalGuidelines={[0, 100, 200, 400, 500]}
         renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
-        bounds={{ left: 5, top: 5, right: 5, bottom: 5, position: "css" }}
+        bounds={{ left: 17, top: 17, right: -10, bottom: -10, position: "css" }}
       />
     </>
   );

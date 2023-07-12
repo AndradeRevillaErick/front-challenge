@@ -6,14 +6,23 @@ export const FrontChallenge = () => {
     selected,
     setSelected,
     addMoveable,
+    updateMoveable,
     deleteMoveable,
     moveableComponents,
+    addMoveableT2,
   } = useFront();
+
+  // console.log(moveableComponents);
 
   return (
     <main>
-      <button onClick={addMoveable}>Add Moveable1</button>
-      <button onClick={deleteMoveable}>Delete Moveable1</button>
+      <button className="addBtn" onClick={addMoveable}>
+        ADD
+      </button>
+      {/* <button onClick={addMoveableT2}>Add Moveable1</button> */}
+      <button className="deleteBtn" onClick={deleteMoveable}>
+        DELETE
+      </button>
       <div
         id="parent"
         style={{
@@ -22,12 +31,13 @@ export const FrontChallenge = () => {
           width: "65vw",
         }}
       >
-        {moveableComponents.map((item, index) => (
+        {moveableComponents.map((item) => (
           <DraggableElement
             {...item}
-            key={index}
+            key={item.id}
             setSelected={setSelected}
             isSelected={selected === item.id}
+            updateMoveable={updateMoveable}
           />
         ))}
       </div>
