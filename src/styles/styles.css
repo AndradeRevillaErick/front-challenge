@@ -5,20 +5,6 @@ body{
   background-color: #232323;
 }
 
-.title {
-  font-family: sans-serif;
-  text-align: center;
-}
-
-.component_container {
-  position: relative;
-}
-
-.main {
-  display: grid;
-  gap: 1em;
-}
-
 button{
   margin: 50px;
   font-size: 2rem;

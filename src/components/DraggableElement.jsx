@@ -10,7 +10,6 @@ export const DraggableElement = ({
   background,
   setSelected,
   isSelected = false,
-  updateMoveable,
 }) => {
   const { ref, onDrag, onResize } = useDraggable();
 

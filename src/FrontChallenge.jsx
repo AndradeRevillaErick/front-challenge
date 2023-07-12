@@ -6,20 +6,15 @@ export const FrontChallenge = () => {
     selected,
     setSelected,
     addMoveable,
-    updateMoveable,
     deleteMoveable,
     moveableComponents,
-    addMoveableT2,
   } = useFront();
-
-  // console.log(moveableComponents);
 
   return (
     <main>
       <button className="addBtn" onClick={addMoveable}>
         ADD
       </button>
-      {/* <button onClick={addMoveableT2}>Add Moveable1</button> */}
       <button className="deleteBtn" onClick={deleteMoveable}>
         DELETE
       </button>
@@ -37,7 +32,6 @@ export const FrontChallenge = () => {
             key={item.id}
             setSelected={setSelected}
             isSelected={selected === item.id}
-            updateMoveable={updateMoveable}
           />
         ))}
       </div>

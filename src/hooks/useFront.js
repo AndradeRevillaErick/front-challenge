@@ -20,42 +20,17 @@ export const useFront = () => {
     ]);
   };
 
-  const addMoveableT2 = async () => {
-    const rndImage = await getImage();
-    setMoveableComponents([
-      ...moveableComponents,
-      {
-        id: Math.floor(Math.random() * Date.now()),
-        background: `url(${rndImage.imagenPng})`,
-      },
-    ]);
-  };
-
   const deleteMoveable = () => {
-    console.log(moveableComponents);
     setMoveableComponents(
       moveableComponents.filter((element) => element.id !== selected)
     );
-  };
-
-  const updateMoveable = (id, newComponent) => {
-    const updatedMoveables = moveableComponents.map((moveable, i) => {
-      if (moveable.id === id) {
-        return { id, ...newComponent };
-      }
-      return moveable;
-    });
-    console.log(updatedMoveables);
-    setMoveableComponents(updatedMoveables);
   };
 
   return {
     selected,
     setSelected,
     addMoveable,
-    updateMoveable,
     deleteMoveable,
     moveableComponents,
-    addMoveableT2,
   };
 };
