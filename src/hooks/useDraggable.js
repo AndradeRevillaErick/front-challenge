@@ -13,5 +13,9 @@ export const useDraggable = () => {
     e.target.style.transform = e.drag.transform;
   };
 
-  return { ref, onDrag, onResize };
+  const onRotate = async (e) => {
+    e.target.style.transform = e.drag.transform;
+  };
+
+  return { ref, onDrag, onResize, onRotate };
 };

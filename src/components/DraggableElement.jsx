@@ -11,7 +11,7 @@ export const DraggableElement = ({
   setSelected,
   isSelected = false,
 }) => {
-  const { ref, onDrag, onResize } = useDraggable();
+  const { ref, onDrag, onResize, onRotate } = useDraggable();
 
   return (
     <>
@@ -36,6 +36,7 @@ export const DraggableElement = ({
         target={isSelected && ref.current}
         resizable
         draggable
+        rotatable
         origin={false}
         onDrag={(e) => {
           onDrag(e);
@@ -44,6 +45,8 @@ export const DraggableElement = ({
         snappable={true}
         snapThreshold={15}
         onResize={onResize}
+        onRotate={onRotate}
+        rotationPosition={"top"}
         verticalGuidelines={[50, 150, 250, 450, 550]}
         horizontalGuidelines={[0, 100, 200, 400, 500]}
         renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
